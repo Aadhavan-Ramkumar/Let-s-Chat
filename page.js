@@ -67,6 +67,10 @@ function UpdateLike(MessageID) {
     });
 }
 
+function BackToRooms() {
+    window.location = "room.html";
+}
+
 function LogOut() {
     localStorage.removeItem("Username");
     localStorage.removeItem("RoomName");
