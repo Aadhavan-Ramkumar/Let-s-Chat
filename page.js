@@ -23,6 +23,23 @@ function SendMessage() {
     document.getElementById("Message").value = "";
 }
 
+window.addEventListener("keydown", MyKeyDown);
+
+function MyKeyDown(e) {
+    KeyPressed = e.keyCode;
+    console.log(KeyPressed);
+    if (KeyPressed == '13') {
+        Message = document.getElementById("Message").value;
+        firebase.database().ref(RoomName).push({
+            Name: Username,
+            Message: Message,
+            Like: 0
+        });
+
+        document.getElementById("Message").value = "";
+    }
+}
+
 function getData() {
     firebase.database().ref("/" + RoomName).on('value', function (snapshot) {
         document.getElementById("Output").innerHTML = "";
