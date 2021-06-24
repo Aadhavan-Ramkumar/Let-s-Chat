@@ -29,14 +29,13 @@ function MyKeyDown(e) {
     KeyPressed = e.keyCode;
     console.log(KeyPressed);
     if (KeyPressed == '13') {
-        Message = document.getElementById("Message").value;
-        firebase.database().ref(RoomName).push({
-            Name: Username,
-            Message: Message,
-            Like: 0
-        });
-
-        document.getElementById("Message").value = "";
+        SendMessage();
+    }
+    if (e.ctrlKey == true && e.altKey == true && KeyPressed == '66') {
+        BackToRooms();
+    }
+    if (e.ctrlKey == true && e.altKey == true && KeyPressed == '76') {
+        LogOut();
     }
 }
 
