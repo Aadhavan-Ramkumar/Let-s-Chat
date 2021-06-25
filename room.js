@@ -32,26 +32,15 @@ function MyKeyDown(e) {
       if (e.ctrlKey == true && e.altKey == true && KeyPressed == '76') {
             LogOut();
       }
-      if (e.ctrlKey == true && e.altKey == true && KeyPressed == '49') {
-            RedirectToRoom(RoomIndex[0]);
-      }
-      if (e.ctrlKey == true && e.altKey == true && KeyPressed == '50') {
-            RedirectToRoom(RoomIndex[1]);
-      }
-      if (e.ctrlKey == true && e.altKey == true && KeyPressed == '51') {
-            RedirectToRoom(RoomIndex[2]);
-      }
 }
 
 function getData() {
       firebase.database().ref("/").on('value', function (snapshot) {
             document.getElementById("Output").innerHTML = "";
-            RoomIndex = [];
             snapshot.forEach(function (childSnapshot) {
                   childKey = childSnapshot.key;
                   Rooms = childKey;
                   console.log("Room " + Rooms);
-                  RoomIndex.push(Rooms);
                   Row = "<div class='roomname' id='" + Rooms + "'onclick='RedirectToRoom(this.id)'>#" + Rooms + "</div><hr>";
                   document.getElementById("Output").innerHTML += Row;
             });
